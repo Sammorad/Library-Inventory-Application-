@@ -11,8 +11,8 @@
     
         <h1>AyCode Library</h1>
         <form action="">
-            <input type="text" name="books" class="border-black">
-            <button>Search</button>
+            <input type="text" name="course" class="border-2 border-black">
+            <button>Add</button>
         </form>
         <nav>
             <a href="">Add Courses</a>
@@ -21,5 +21,14 @@
     
 
 </header>
+<section>
+    <p>Education is a priority </p>
+    <ul>
+        <% courses.map((item) =>{ %>
+            <li><%= item.course  %></li>
+
+       <% }) %>
+    </ul>
+</section>
 </body>
 </html>
