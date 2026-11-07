@@ -2,6 +2,7 @@ const express = require ("express");
 const app = express();
 const path = require ("node:path")
 const courseRoute = require("./routes/courseRouter")
+const booksRouter = require('./routes/booksRouters')
 
 
 app.set("views", path.join(__dirname, "views"))
@@ -17,6 +18,10 @@ app.listen(PORT, (error) => {
     console.log(`am good at Port : ${PORT}`)
 })
 
-app.use("/", courseRoute)
+app.get("/", (req, res) => {
+    res.render("index")
+})
+app.use("/courses", courseRoute)
+app.use("/books", booksRouter)
 
 

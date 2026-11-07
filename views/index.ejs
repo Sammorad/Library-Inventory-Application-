@@ -6,29 +6,24 @@
     <title>ayCode Library</title>
     <link rel="stylesheet" href="/output.css">
 </head>
-<body >
-<header class="text-red-600 flex justify-between m-4">
+<body class="bg-gray-400">
+<header class="text-red-600 flex justify-around py-4 flex-wrap md:flex-wrap-reverse outline-2">
     
-        <h1>AyCode Library</h1>
-        <form action="">
-            <input type="text" name="course" class="border-2 border-black">
-            <button>Add</button>
-        </form>
-        <nav>
-            <a href="">Add Courses</a>
-            <a href="">Add Books </a>
+        <section class="flex gap-2.5">
+            <h1 class="font-black font-serif text-5xl">AyCode</h1>
+            <h2>Library</h2>
+        </section>
+       
+        <nav class="rounded-4xl flex gap-2.5 bg-gray-400 px-5 py-3 border-r">
+            <h1 class="p-1 rounded-3xl hover:bg-white px-2">Dashboard</h1>
+            <h1 class="p-1 rounded-3xl hover:bg-white px-2">Courses</h1>
+            <h1 class="p-1 rounded-3xl hover:bg-white px-2 ">Books</h1>
         </nav>
     
 
 </header>
 <section>
-    <p>Education is a priority </p>
-    <ul>
-        <% courses.map((item) =>{ %>
-            <li><%= item.course  %></li>
-
-       <% }) %>
-    </ul>
+   
 </section>
 </body>
 </html>

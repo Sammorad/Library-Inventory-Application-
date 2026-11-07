@@ -2,7 +2,7 @@ const db = require("../db/queries");
 
 async function getCourses(req, res){
     const courses = await db.getAllcourses();
-    res.render("index", { courses })
+    res.render("course", { courses })
 }
 
 async function insertCourse(req, res) {
