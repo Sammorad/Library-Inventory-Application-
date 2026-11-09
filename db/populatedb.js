@@ -6,11 +6,7 @@ const SQL = `
         course VARCHAR (255)
         );
 
-        INSERT INTO courses(course)
-        VALUES
-        ('Physics'),
-        ('Chemistry'),
-        ('Mathematics');
+        
 `;
 
 async function main() {
