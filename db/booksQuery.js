@@ -1,5 +1,5 @@
 const pool = require("./pool")
-const bookRouter = require("../routes/booksRouters")
+
 
 
 
@@ -20,11 +20,20 @@ async function createTable(books) {
     
 }
 
-async function insertBooks(books, Title, Author, Pages) {
-  await pool.query("INSERT INTO books (Title, Author, Pages) VALUES ($1, $2, $3)", [Title, Author, Pages]);
+async function insertBooks(subject, Title, Author, Pages) {
+  await pool.query(`INSERT INTO ${subject} (Title, Author, Pages) VALUES ($1, $2, $3)`, [Title, Author, Pages]);
 }
+
+async function getAllBooks(books) {
+    const {rows} = await pool.query(`SELECT * FROM ${books}`)
+    return rows
+    
+}
+
+
 
 module.exports = {
     createTable,
-    insertBooks
+    insertBooks,
+    getAllBooks
 }

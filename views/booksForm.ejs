@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <%- include('navbar')  %>
+   <form action="/<%= subject %>/booksForm" method="POST">
+    <label for="bookTitle">Book Title</label>
+    <input type="text" name="bookTitle" placeholder="Enter Book Title" required>
+    <label for="bookAuthor">Book Author</label>
+    <input type="text" name="bookAuthor" id="bookAuthor" required placeholder="Enter Book Author">
+    <label for="bookPages">Number of Pages</label>
+    <input type="text" name="bookPages" placeholder="Number of Pages" id="bookPages" required>
+    <button>Submit</button>
+    <button>Cancel</button>
+
+   </form>
+    
+</body>
+</html>

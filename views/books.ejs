@@ -6,7 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>I am the list of books for <%= books %></h1>
+     <%- include('navbar') %>
+     <div>
+        <h1>I am the list of books for books</h1>
+        <a href="/<%= subject %>/booksForm">Add Books</a>
+     </div>
+    
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Page</th>
+            <th>Action</th>
+        </tr>
+       
+       <% books.forEach((item) => { %>
+        <tr>
+            <td><%= item.id %></td>
+            <td><%= item.title %></td>
+            <td><%= item.author %></td>
+            <td><%= item.pages %></td>
+        </tr>
+        <%})%>
+        
+        
+    </table>
     
 </body>
 </html>

@@ -18,10 +18,12 @@ app.listen(PORT, (error) => {
     console.log(`am good at Port : ${PORT}`)
 })
 
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
     res.render("index")
 })
 app.use("/courses", courseRoute)
-app.use("/books", booksRouter)
+app.use("/:subject", booksRouter)
 
 
