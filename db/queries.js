@@ -17,8 +17,21 @@ async function lengthCourse() {
     
 }
 
+async function deleteCourse (course){
+    if(!/^[a-z_][a-z0-9_]{0,62}$/i.test(course)){
+        throw new Error("Invalid table name")
+    }
+     await pool.query(`DROP TABLE IF EXISTS ${course}`)
+    await pool.query('DELETE FROM courses WHERE course =  $1', [course])
+   
+
+
+}
+
 module.exports = {
     getAllcourses,
     insertCourses,
-    lengthCourse
+    lengthCourse,
+    deleteCourse
+
 }

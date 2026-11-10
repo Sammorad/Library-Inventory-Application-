@@ -7,5 +7,6 @@ courseRouter.get("/", courseControl.getCourses)
 courseRouter.post("/", courseControl.insertCourse)
 courseRouter.get("/courseForm", courseControl.getCourseForm)
 courseRouter.post("/courseForm", courseControl.postCourseform)
+courseRouter.post('/:course/delete', courseControl.deleteCourse)
 
 module.exports = courseRouter;

@@ -21,8 +21,12 @@
                     <tr >
                         <td class="p-5"><%= item.id %></td>
                         <td><%= item.course %></td>
-                        <td><a class="hover:underline" href="/<%= item.course %>">View Course</a></td>
-                        <td><button class="hover:underline">Delete</button></td>
+                        <td><a  class="hover:bg-gray-200 rounded-2xl py-2 px-3" href="/<%= item.course %>">View Course</a></td>
+                        <td>
+                            <form action="/courses/<%= item.course %>/delete" method="POST">
+                                <button  class="hover:bg-gray-200 rounded-2xl py-2 px-3">Delete</button>
+                            </form>
+                        </td>
                     </tr>
 
                 <%}) %>

@@ -20,16 +20,24 @@ async function insertCourse(req, res) {
 async function postCourseform(req, res) {
     const { newCourse } = req.body
     console.log(`I am ${newCourse}`)
-    booksDb.createTable(newCourse)
+    await booksDb.createTable(newCourse)
     await db.insertCourses(newCourse)
     res.redirect("/courses")
     
     
 }
 
+async function deleteCourse(req, res){
+    const {course} = req.params;
+    await db.deleteCourse(course)
+    res.redirect('/courses')
+
+}
+
 module.exports = {
     insertCourse,
     getCourses,
     getCourseForm,
-    postCourseform
+    postCourseform,
+    deleteCourse
 }
