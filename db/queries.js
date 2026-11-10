@@ -11,7 +11,14 @@ async function insertCourses(course) {
     
 }
 
+async function lengthCourse() {
+    const {rows} = await pool.query("SELECT COUNT (*) AS total FROM courses")
+    return Number(rows[0].total)
+    
+}
+
 module.exports = {
     getAllcourses,
-    insertCourses
+    insertCourses,
+    lengthCourse
 }

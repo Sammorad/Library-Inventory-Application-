@@ -1,8 +1,6 @@
 const pool = require("./pool")
 
 
-
-
 async function createTable(books) {
     if (!/^[a-z_][a-z0-9_]{0,62}$/i.test(books)){
         throw new Error ("Invalid table name") 
@@ -30,10 +28,19 @@ async function getAllBooks(books) {
     
 }
 
+async function deleteBook(subject, id){
+    if(!/^[a-z_][a-z0-9]{0,62}$/i.test(subject)){
+        throw new Error("Invalid table name")
+    }
+    await pool.query(`DELETE FROM ${subject} WHERE id =  $1`, [id])
+
+}
+
 
 
 module.exports = {
     createTable,
     insertBooks,
-    getAllBooks
+    getAllBooks,
+    deleteBook
 }

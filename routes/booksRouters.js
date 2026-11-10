@@ -5,6 +5,7 @@ const booksController = require("../controller/booksController")
 booksRouter.get("/", booksController.getAllBook )
 booksRouter.get("/booksForm", booksController.getBooksForm)
 booksRouter.post("/booksForm", booksController.postBooksForm)
+booksRouter.post("/:id", booksController.deleteBook)
 
 
 

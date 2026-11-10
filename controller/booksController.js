@@ -21,8 +21,16 @@ async function postBooksForm(req, res) {
     
 }
 
+async function deleteBook(req, res) {
+    const {subject, id} = req.params;
+    await db.deleteBook(subject, id)
+    res.redirect(`/${subject}`)
+    
+}
+
 module.exports = {
     getAllBook,
     getBooksForm,
-    postBooksForm
+    postBooksForm,
+    deleteBook
 }

@@ -11,7 +11,7 @@
     <section class="flex flex-col items-center">
         <div class="m-5  flex justify-between w-5/6 py-5">
             <h1 class="text-4xl">Courses</h1>
-            <a href="/courses/courseForm" class="text-3xl">Add Courses</a>
+            <a href="/courses/courseForm" class="text-3xl bg-white p-4 rounded-2xl ho">Add Courses</a>
         </div>
         <table class="w-5/6 text-left border-collapse text-slate-950 table-auto md:table-fixed px-5 bg-white">
             <tr>
@@ -21,8 +21,8 @@
                     <tr >
                         <td class="p-5"><%= item.id %></td>
                         <td><%= item.course %></td>
-                        <td><a href="/<%= item.course %>">View Course</a></td>
-                        <td><button>Delete</button></td>
+                        <td><a class="hover:underline" href="/<%= item.course %>">View Course</a></td>
+                        <td><button class="hover:underline">Delete</button></td>
                     </tr>
 
                 <%}) %>

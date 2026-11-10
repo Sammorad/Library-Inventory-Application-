@@ -3,6 +3,8 @@ const app = express();
 const path = require ("node:path")
 const courseRoute = require("./routes/courseRouter")
 const booksRouter = require('./routes/booksRouters')
+const queries = require("./db/queries")
+
 
 
 app.set("views", path.join(__dirname, "views"))
@@ -20,8 +22,9 @@ app.listen(PORT, (error) => {
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-    res.render("index")
+app.get("/", async (req, res) => {
+    const courseLength = await queries.lengthCourse()
+    res.render("index", {courseLength})
 })
 app.use("/courses", courseRoute)
 app.use("/:subject", booksRouter)
