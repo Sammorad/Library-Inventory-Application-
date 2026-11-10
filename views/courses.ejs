@@ -17,9 +17,10 @@
             <tr>
                 <th class="p-5 font-bold">Id</th>
                 <th class="p-5 font-bold">Courses</th>
-                <% courses.forEach((item) =>{%>
+                <% courses.forEach((item, index) =>{%>
                     <tr >
-                        <td class="p-5"><%= item.id %></td>
+                        
+                        <td class="p-5"><%= index + 1 %></td>
                         <td><%= item.course %></td>
                         <td><a  class="hover:bg-gray-200 rounded-2xl py-2 px-3" href="/<%= item.course %>">View Course</a></td>
                         <td>
