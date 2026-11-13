@@ -1,4 +1,5 @@
 const db = require("../db/queries");
+
 const booksDb = require("../db/booksQuery")
 
 async function getCourses(req, res){
@@ -18,18 +19,17 @@ async function insertCourse(req, res) {
 }
 
 async function postCourseform(req, res) {
-    const { newCourse } = req.body
-    console.log(`I am ${newCourse}`)
-    await booksDb.createTable(newCourse)
-    await db.insertCourses(newCourse)
+   
+    const {course} = req.body
+    await db.insertCourses(course)
     res.redirect("/courses")
     
     
 }
 
 async function deleteCourse(req, res){
-    const {course} = req.params;
-    await db.deleteCourse(course)
+    const {courseId} = req.params;
+    await db.deleteCourse(courseId)
     res.redirect('/courses')
 
 }

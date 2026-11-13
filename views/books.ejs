@@ -10,8 +10,8 @@
      <%- include('navbar') %>
      <section class="flex flex-col items-center">
         <div class="m-5 flex justify-between w-5/6 py-5">
-        <h1 class="text-4xl"><%= subject %> Books</h1>
-        <a class="text-3xl" href="/<%= subject %>/booksForm">Add Books</a>
+        <h1 class="text-4xl"><%= courses.id %> Books</h1>
+        <a class="text-3xl bg-white p-4 rounded-2xl ho" href="/<%= courseId%>/booksForm">Add Books</a>
      </div>
     
     <table class="w-5/6 text-left border-collapse text-slate-950 table-auto md:table-fixed px-5 bg-white">
@@ -20,17 +20,20 @@
             <th class="p-5 font-bold">Title</th>
             <th class="p-5 font-bold">Author</th>
             <th class="p-5 font-bold">Page</th>
+            
             <th class="p-5 font-bold">Action</th>
         </tr>
        
        <% books.forEach((item, index) => { %>
+        
         <tr>
             <td><%= index + 1 %></td>
             <td><%= item.title %></td>
             <td><%= item.author %></td>
             <td><%= item.pages %></td>
+            
             <td>
-                <form action="/<%= subject %>/<%= item.id %>" method="POST">
+                <form action="/<%= courseId %>/<%= item.id %>" method="POST">
                     <button class="hover:bg-gray-200 rounded-2xl py-2 px-3" type="submit">Delete</button>
                 </form>
             </td>

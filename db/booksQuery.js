@@ -1,45 +1,50 @@
-const pool = require("./pool")
+const pool = require("./pool") 
 
 
-async function createTable(books) {
-    if (!/^[a-z_][a-z0-9_]{0,62}$/i.test(books)){
-        throw new Error ("Invalid table name") 
-    }
-    await pool.query(
-        `
-        CREATE TABLE IF NOT EXISTS ${books}(
-        id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-        Title VARCHAR (255), 
-        Author VARCHAR (255), 
-        Pages INT
-        );            
-`
-    )
-    
+
+
+async function insertBooks(title, author, pages, course_id) {
+  await pool.query(`INSERT INTO books (title, author, pages, course_id) VALUES ($1, $2, $3, $4)`, [title, author, pages, course_id]);
 }
 
-async function insertBooks(subject, Title, Author, Pages) {
-  await pool.query(`INSERT INTO ${subject} (Title, Author, Pages) VALUES ($1, $2, $3)`, [Title, Author, Pages]);
-}
-
-async function getAllBooks(books) {
-    const {rows} = await pool.query(`SELECT * FROM ${books}`)
+async function getAllBooks() {
+    const {rows} = await pool.query(`SELECT books.*, courses.course 
+            FROM books
+            JOIN courses ON books.course_id = courses.id `);
     return rows
     
 }
 
-async function deleteBook(subject, id){
-    if(!/^[a-z_][a-z0-9]{0,62}$/i.test(subject)){
-        throw new Error("Invalid table name")
-    }
-    await pool.query(`DELETE FROM ${subject} WHERE id =  $1`, [id])
+async function lengthBooks() {
+    const {rows} = await pool.query("SELECT COUNT (*) AS total FROM books")
+    return Number(rows[0].total)}
 
+
+async function getBooks(courseId) {
+    const {rows} = await pool.query("SELECT * FROM books WHERE course_id = $1",[courseId]);
+    return rows
+    
+}
+
+async function deleteBook(id, course_id){
+   //to delete books based on bourse courses and book id 
+    await pool.query("DELETE FROM books WHERE id =  $1 AND course_id = $2", [id, course_id]
+
+    )
+
+}
+
+async function delBook(course_id){
+    //to delete books based on courses 
+    await pool.query('DELETE FROM books WHERE course_id = $1',[course_id])
 }
 
 
 
 module.exports = {
-    createTable,
+    delBook,
+    lengthBooks,
+    getBooks,
     insertBooks,
     getAllBooks,
     deleteBook

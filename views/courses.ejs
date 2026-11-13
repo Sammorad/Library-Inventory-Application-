@@ -13,27 +13,39 @@
             <h1 class="text-4xl">Courses</h1>
             <a href="/courses/courseForm" class="text-3xl bg-white p-4 rounded-2xl ho">Add Courses</a>
         </div>
-        <table class="w-5/6 text-left border-collapse text-slate-950 table-auto md:table-fixed px-5 bg-white">
-            <tr>
-                <th class="p-5 font-bold">Id</th>
+        <div class="w-5/6 overflow-x-auto">
+            <table class="w-full min-w-[32rem] table-fixed border-collapse bg-white text-left text-slate-950">
+           <thead>
+             <tr>
+                <th class="p-3 w-16">No</th>
                 <th class="p-5 font-bold">Courses</th>
+                <th class="w-32 p-3">View</th>
+                <th class="w-24 p-3">Action</th>
+                
+             </tr>
+           </thead>
+           <tbody>
                 <% courses.forEach((item, index) =>{%>
-                    <tr >
+                    <tr>
                         
-                        <td class="p-5"><%= index + 1 %></td>
-                        <td><%= item.course %></td>
-                        <td><a  class="hover:bg-gray-200 rounded-2xl py-2 px-3" href="/<%= item.course %>">View Course</a></td>
+                        <td class="p-3"><%= index + 1 %></td>
+                        <td class="p-3 text-wrap"><%= item.course %></td>
+                        <td><a  class="hover:bg-gray-200 rounded-2xl" href="/<%= item.id %>">View Course</a></td>
                         <td>
-                            <form action="/courses/<%= item.course %>/delete" method="POST">
+                            <form action="/courses/<%= item.id %>/delete" method="POST">
                                 <button  class="hover:bg-gray-200 rounded-2xl py-2 px-3">Delete</button>
                             </form>
                         </td>
                     </tr>
 
-                <%}) %>
+                    <%}) %>
+           </tbody>
                 
-            </tr>
+                
+           
         </table>
+        </div>
+        
     </section>
     
 </body>

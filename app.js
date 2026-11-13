@@ -4,6 +4,7 @@ const path = require ("node:path")
 const courseRoute = require("./routes/courseRouter")
 const booksRouter = require('./routes/booksRouters')
 const queries = require("./db/queries")
+const bkqueries = require("./db/booksQuery")
 
 
 
@@ -24,9 +25,20 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", async (req, res) => {
     const courseLength = await queries.lengthCourse()
-    res.render("index", {courseLength})
+    const bookLength = await bkqueries.lengthBooks()
+    res.render("index", {courseLength, bookLength})
+})
+app.get("/listBooks", async (req, res) => {
+    const listOfBooks = await bkqueries.getAllBooks()
+    
+
+    res.render("listBooks", { listOfBooks })
+
+
+
 })
 app.use("/courses", courseRoute)
 app.use("/:subject", booksRouter)
+
 
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="/output.css">
+</head>
+<body class="bg-gray-300">
+   <%- include('navbar')  %>
+
+   <section class="flex flex-1 items-center justify-center px-4 py-8">
+    <form action="/<%= subject %>/booksForm" method="POST"
+        class="w-full max-w-md space-y-5 rounded-xl bg-white p-6 ">
+    <div class="flex flex-col gap-1">
+        <label for="bookTitle" class="text-sm font-semibold">Book Title</label>
+        <input type="text" name="bookTitle" placeholder="Enter Book Title" required
+        class="rounded-md border border-gray-400 px-3 py-2 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-200">
+    </div>
+    <div class="flex flex-col gap-1">
+        <label for="bookAuthor" class="text-sm font-semibold">Book Author</label>
+    <input type="text" name="bookAuthor" id="bookAuthor" required placeholder="Enter Book Author"
+    class="rounded-md border border-gray-400 px-3 py-2 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-200">
+    </div>
+    <div class="flex flex-col gap-1">
+        <label for="bookPages" class="text-sm font-semibold">Number of Pages</label>
+    <input type="text" name="bookPages" placeholder="Number of Pages" id="bookPages" required
+    class="rounded-md border border-gray-400 px-3 py-2 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-200">
+    </div>
+    <div class="flex flex-col gap-1">
+        <label for="CourseId" class="text-sm font-semibold">Courses</label>
+        <select name="CourseId" id="CourseId" required
+        class="rounded-md border border-gray-400 bg-white px-3 py-2
+        focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-200">
+        <option value="" disabled selected>Select a Course</option>
+        <% courses.forEach((item) => { %>
+            <option value="<%= item.id %>"><%= item.course  %></option>
+        <%})%>
+
+
+        </select>
+        
+        
+    </div>
+    <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+    <button class="rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-700">Submit</button>
+   <a href="/<%= subject %>" class="rounded-md border border-gray-400 px-4 py-2 text-center hover:bg-gray-100">Cancel</a>
+    </div>
+
+   </form>
+   </section>
+    
+</body>
+</html>
