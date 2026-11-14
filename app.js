@@ -13,11 +13,9 @@ app.set("view engine", "ejs")
 app.use(express.static(path.join(__dirname, "public")));
 
 const PORT  = process.env.PORT || 3000;
+const HOST = process.env.IP || "0.0.0.0"
 
-app.listen(PORT, (error) => {
-    if (error){
-        throw error
-    }
+app.listen(PORT, HOST,() => {
     console.log(`am good at Port : ${PORT}`)
 })
 
